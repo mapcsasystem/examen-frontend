@@ -1,10 +1,12 @@
 {
-  "name": "prueba",
+  "name": "school-prueba",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve --base-href ./",
+    "build": "ng build -c production --base-href ./",
+    "build:staging": "ng build -c staging --base-href ./",
+    "build:href": "ng build -c production --base-href ./",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
