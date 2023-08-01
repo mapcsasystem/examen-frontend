@@ -4,4 +4,4 @@ import { Component } from '@angular/core';
   selector: 'app-auth-page',
   template: '<router-outlet></router-outlet>',
 })
-export class AuthPageComponent {}
+export class AuthComponent {}
