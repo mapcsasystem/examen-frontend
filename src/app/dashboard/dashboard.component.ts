@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -17,4 +18,8 @@ export class DashboardComponent {
       map((result) => result.matches),
       shareReplay()
     );
+  constructor(private readonly router: Router) {}
+  navigate(url: string): void {
+    this.router.navigateByUrl(`dashboard/${url}`, { replaceUrl: true });
+  }
 }
