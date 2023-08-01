@@ -28,6 +28,13 @@ const routes: Routes = [
             (m) => m.UsersPageModule
           ),
       },
+      {
+        path: 'perfil',
+        loadChildren: () =>
+          import('../dashboard/pages/profile-page/profile-page.module').then(
+            (m) => m.ProfilePageModule
+          ),
+      },
     ],
   },
 ];
