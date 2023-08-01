@@ -1,0 +1,54 @@
+<p>
+    <mat-toolbar color="primary">
+        <span>Examen FrontEnd Angular</span>
+    </mat-toolbar>
+</p>
+<form [formGroup]="formLogin" (ngSubmit)="login()">
+    <div class="container">
+
+        <mat-card class="card-size mat-elevation-z8">
+            <mat-card-header>
+                <mat-card-title>Iniciar sesión</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <p>
+                    <mat-form-field appearance="outline" class="size-input-full">
+                        <mat-label>Usuario</mat-label>
+                        <input type="text" matInput placeholder="Usuario" formControlName="username">
+                        <mat-icon matSuffix>person</mat-icon>
+                        <mat-error
+                            *ngIf="getField('username')?.invalid && (getField('username')?.dirty || getField('username')?.touched)">
+                            <span *ngIf="getField('username')?.hasError('required')">
+                                Campo requerido.
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
+                </p>
+
+                <p>
+                    <mat-form-field appearance="outline" class="size-input-full">
+                        <mat-label>Contraseña</mat-label>
+                        <input [type]="eye?'text':'password'" matInput placeholder="Contraseña"
+                            formControlName="password">
+                        <button type="button" mat-icon-button color="primary" aria-label="eye icon" (click)="eye=!eye"
+                            matSuffix>
+                            <mat-icon>{{ eye?'visibility':'visibility_off' }}</mat-icon>
+                        </button>
+                        <mat-error
+                            *ngIf="getField('password')?.invalid && (getField('password')?.dirty || getField('password')?.touched)">
+                            <span *ngIf="getField('password')?.hasError('required')">
+                                Campo requerido.
+                            </span>
+                            <span *ngIf="getField('password')?.hasError('minlength')">
+                                Campo debe ser mayor ó igual a 3.
+                            </span>
+                        </mat-error>
+                    </mat-form-field>
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button type="submit" mat-raised-button color="primary" style="width: 100%;">Aceptar</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</form>
