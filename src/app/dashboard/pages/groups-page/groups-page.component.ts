@@ -41,8 +41,6 @@ export class GroupsPageComponent implements OnInit, OnDestroy {
     );
     this._groupsService.getAllGroups().subscribe((resp) => {
       this.groupsData = resp.dataList;
-      console.log(this.groupsData);
-
       this.addGroups([...this.groupsData]);
     });
   }

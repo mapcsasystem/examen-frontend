@@ -20,7 +20,6 @@ export class BreadcrumComponent implements OnInit {
 
   navigate(url: string) {
     const urlTemp = url.split('/');
-    console.log(urlTemp);
     this.fontStyleControl.setValue(url);
     this._router.navigateByUrl(`${url}`, { replaceUrl: true });
     this.actualizar.emit(url);

@@ -41,7 +41,7 @@ export class AuthService {
       .post<ILoginResponse>(`${this.baseUrl}/session/login`, body, httpOptions)
       .pipe(
         tap((resp) => {
-          console.log(this.parseJwt(resp.jwttoken));
+          // console.log(this.parseJwt(resp.jwttoken));
         })
       );
   }

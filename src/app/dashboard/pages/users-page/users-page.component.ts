@@ -40,8 +40,6 @@ export class UsersPageComponent implements OnInit {
     );
     this._usersService.getAllUsers().subscribe((resp) => {
       this.usersData = resp.dataList;
-      console.log(this.usersData);
-
       this.addUsers([...this.usersData]);
     });
   }
