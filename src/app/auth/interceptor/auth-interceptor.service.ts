@@ -21,9 +21,9 @@ export class AuthInterceptorService implements HttpInterceptor {
         'Content-Type': 'application/json',
         'Content-Encoding': 'gzip',
         'Access-Control-Allow-Origin': '*',
-        Authorization: `Bearer ${token}`,
       },
     });
+    req.clone({});
     return next.handle(headerLogin);
   }
 }
