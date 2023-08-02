@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material/material.module';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 registerLocaleData(LocaleEs, 'es-MX');
 
 @NgModule({
@@ -30,6 +31,8 @@ registerLocaleData(LocaleEs, 'es-MX');
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService,
     { provide: LOCALE_ID, useValue: 'es-MX' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'MXN' },
     { provide: MAT_DATE_LOCALE, useValue: 'es-MX' },
