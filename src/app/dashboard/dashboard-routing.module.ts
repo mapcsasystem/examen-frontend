@@ -36,13 +36,6 @@ const routes: Routes = [
           ).then((m) => m.UserCreatePageModule),
       },
       {
-        path: 'perfil',
-        loadChildren: () =>
-          import('../dashboard/pages/profile-page/profile-page.module').then(
-            (m) => m.ProfilePageModule
-          ),
-      },
-      {
         path: '',
         redirectTo: 'grupos',
         pathMatch: 'full',
