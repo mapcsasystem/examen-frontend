@@ -58,9 +58,19 @@ export class UsersService {
       puesto,
       correo,
       usuario,
-      // grupoFk: grupo,
-      PAR_USR_GRUPO_FK: null,
+      grupoFk: '1',
+      departamento: 'prueba',
+      sucursal: '1',
+      estatus: '0',
+      lote: '',
+      fechaDesactivacion: '2023-03-02',
+      fechaUltAcceso: '2023-03-02',
+      comentarios: 'prueba desde angular',
+      modificacion: 'prueba',
+      fechaModificacion: '2023-03-02',
+      password: '123',
     };
+
     return this.http
       .post(`${this.baseUrl}/usuarios/save`, body, httpOptions)
       .pipe();

@@ -65,6 +65,7 @@ export class UserCreatePageComponent implements OnInit {
       this.formUser.markAllAsTouched();
       return;
     }
+
     const puesto = +this.getField('puesto')?.value;
     const { nombre, apellidoPaterno, apellidoMaterno, correo, grupo, usuario } =
       this.formUser.value;
