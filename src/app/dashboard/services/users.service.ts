@@ -11,23 +11,9 @@ export class UsersService {
   constructor(private readonly http: HttpClient) {}
 
   getAllUsers() {
-    const token1 = localStorage.getItem('token') as string;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Content-Encoding': 'gzip',
-        'Access-Control-Allow-Origin': '*',
-        Authorization: `Bearer ${token1}`,
-      }),
-    };
     const body = {};
-
     return this.http
-      .post<IUserRespose>(
-        `${this.baseUrl}/usuarios/consult-list`,
-        body,
-        httpOptions
-      )
+      .post<IUserRespose>(`${this.baseUrl}/usuarios/consult-list`, body)
       .pipe();
   }
 
@@ -40,15 +26,6 @@ export class UsersService {
     grupo: string,
     usuario: string
   ) {
-    const token1 = localStorage.getItem('token') as string;
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Content-Encoding': 'gzip',
-        'Access-Control-Allow-Origin': '*',
-        Authorization: `Bearer ${token1}`,
-      }),
-    };
     const nombreCompleto = `${nombre} ${apellidoPaterno} ${apellidoMaterno}`;
     const body = {
       nombre,
@@ -71,8 +48,28 @@ export class UsersService {
       password: '123',
     };
 
-    return this.http
-      .post(`${this.baseUrl}/usuarios/save`, body, httpOptions)
-      .pipe();
+    return this.http.post(`${this.baseUrl}/usuarios/save`, body).pipe();
   }
 }
+
+//!Queda como referencia para agregar cabecera
+// getAllUsers() {
+//   // const token1 = localStorage.getItem('token') as string;
+//   // const httpOptions = {
+//   //   headers: new HttpHeaders({
+//   //     'Content-Type': 'application/json',
+//   //     'Content-Encoding': 'gzip',
+//   //     'Access-Control-Allow-Origin': '*',
+//   //     Authorization: `Bearer ${token1}`,
+//   //   }),
+//   // };
+//   const body = {};
+
+//   return this.http
+//     .post<IUserRespose>(
+//       `${this.baseUrl}/usuarios/consult-list`,
+//       body
+//       // httpOptions
+//     )
+//     .pipe();
+// }

@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import LocaleEs from '@angular/common/locales/es-MX';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,7 @@ import { MaterialModule } from './shared/material/material.module';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
+import { TokenInterceptorService } from './dashboard/interceptors/token-interceptor.service';
 registerLocaleData(LocaleEs, 'es-MX');
 
 @NgModule({
@@ -36,6 +37,11 @@ registerLocaleData(LocaleEs, 'es-MX');
     { provide: LOCALE_ID, useValue: 'es-MX' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'MXN' },
     { provide: MAT_DATE_LOCALE, useValue: 'es-MX' },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

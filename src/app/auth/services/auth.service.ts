@@ -21,13 +21,13 @@ export class AuthService {
   ) {}
 
   login(username: string, password: string): Observable<ILoginResponse> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Content-Encoding': 'gzip',
-        'Access-Control-Allow-Origin': '*',
-      }),
-    };
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'application/json',
+    //     'Content-Encoding': 'gzip',
+    //     'Access-Control-Allow-Origin': '*',
+    //   }),
+    // };
 
     // const httpOptions = {
     //   headers: new HttpHeaders({
@@ -42,7 +42,11 @@ export class AuthService {
       password,
     };
     return this.http
-      .post<ILoginResponse>(`${this.baseUrl}/session/login`, body, httpOptions)
+      .post<ILoginResponse>(
+        `${this.baseUrl}/session/login`,
+        body
+        // httpOptions
+      )
       .pipe(
         tap((resp) => {
           // console.log(this.parseJwt(resp.jwttoken));
@@ -51,21 +55,21 @@ export class AuthService {
   }
 
   logout(username: string): Observable<Object> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Content-Encoding': 'gzip',
-        'Access-Control-Allow-Origin': '*',
-      }),
-    };
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'application/json',
+    //     'Content-Encoding': 'gzip',
+    //     'Access-Control-Allow-Origin': '*',
+    //   }),
+    // };
     const body = {
       username,
     };
     return this.http
       .post<ILogoutResponse>(
         `${this.baseUrl}/session/logout`,
-        body,
-        httpOptions
+        body
+        // httpOptions
       )
       .pipe(tap((value) => {}));
   }
