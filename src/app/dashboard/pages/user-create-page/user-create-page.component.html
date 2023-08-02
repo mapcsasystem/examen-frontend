@@ -1,1 +1,102 @@
-<p>user-create-page works!</p>
+<form [formGroup]="formUser" (ngSubmit)="save()" autocomplete="off">
+    <mat-card>
+        <mat-card-content>
+            <p>
+                <mat-form-field appearance="outline" class="size-input-full">
+                    <mat-label>Nombre's</mat-label>
+                    <input type="text" matInput placeholder="Nombre's" formControlName="nombre">
+                    <mat-error
+                        *ngIf="getField('nombre')?.invalid && (getField('nombre')?.dirty || getField('nombre')?.touched)">
+                        <span *ngIf="getField('nombre')?.hasError('required')">
+                            Campo requerido.
+                        </span>
+                    </mat-error>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="outline" class="size-input-full">
+                    <mat-label>Apellido Paterno</mat-label>
+                    <input type="text" matInput placeholder="Apellido Paterno" formControlName="apellidoPaterno">
+                    <mat-error
+                        *ngIf="getField('apellidoPaterno')?.invalid && (getField('apellidoPaterno')?.dirty || getField('apellidoPaterno')?.touched)">
+                        <span *ngIf="getField('apellidoPaterno')?.hasError('required')">
+                            Campo requerido.
+                        </span>
+                    </mat-error>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="outline" class="size-input-full">
+                    <mat-label>Apellido Materno</mat-label>
+                    <input type="text" matInput placeholder="Apellido Materno" formControlName="apellidoMaterno">
+                    <mat-error
+                        *ngIf="getField('apellidoMaterno')?.invalid && (getField('apellidoMaterno')?.dirty || getField('apellidoMaterno')?.touched)">
+                        <span *ngIf="getField('apellidoMaterno')?.hasError('required')">
+                            Campo requerido.
+                        </span>
+                    </mat-error>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="outline" class="size-input-full">
+                    <mat-label>Correo</mat-label>
+                    <input type="email" matInput placeholder="Correo" formControlName="correo">
+                    <mat-icon matSuffix>person</mat-icon>
+                    <mat-error
+                        *ngIf="getField('correo')?.invalid && (getField('correo')?.dirty || getField('correo')?.touched)">
+                        <span *ngIf="getField('correo')?.hasError('required')">
+                            Campo requerido.
+                        </span>
+                        <span *ngIf="getField('correo')?.hasError('pattern')">
+                            Correo no válido.
+                        </span>
+                    </mat-error>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="outline" class="size-input-full">
+                    <mat-label>Usuario</mat-label>
+                    <input type="text" matInput placeholder="Usuario" formControlName="usuario">
+                    <mat-error
+                        *ngIf="getField('usuario')?.invalid && (getField('usuario')?.dirty || getField('usuario')?.touched)">
+                        <span *ngIf="getField('usuario')?.hasError('required')">
+                            Campo requerido.
+                        </span>
+                    </mat-error>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="outline" class="size-input-full">
+                    <mat-label>Puesto</mat-label>
+                    <input type="text" matInput placeholder="Puesto" formControlName="puesto">
+                    <mat-error
+                        *ngIf="getField('puesto')?.invalid && (getField('puesto')?.dirty || getField('puesto')?.touched)">
+                        <span *ngIf="getField('puesto')?.hasError('required')">
+                            Campo requerido.
+                        </span>
+                        <span *ngIf="getField('puesto')?.hasError('pattern')">
+                            Solo se permiten números.
+                        </span>
+                    </mat-error>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="outline" class="size-input-full">
+                    <mat-label>Grupo</mat-label>
+                    <input type="text" placeholder="Selecciona un grupo" aria-label="Grupo" matInput
+                        formControlName="grupo" [matAutocomplete]="auto">
+                    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                            {{option}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button type="button" mat-raised-button color="light" style="margin-right: 10px;"
+                (click)="cancel()">Cancelar</button>
+            <button type="submit" mat-raised-button color="primary">Guardar</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

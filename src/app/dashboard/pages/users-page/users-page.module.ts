@@ -6,6 +6,7 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
 
 import { UsersPageRoutingModule } from './users-page-routing.module';
 import { UsersPageComponent } from './users-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [UsersPageComponent],
@@ -13,6 +14,7 @@ import { UsersPageComponent } from './users-page.component';
     CommonModule,
     MaterialModule,
     HttpClientModule,
+    ReactiveFormsModule,
     UsersPageRoutingModule,
   ],
 })

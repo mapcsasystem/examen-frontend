@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { IUserRespose } from '../interfaces/users.interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -8,4 +9,60 @@ import { environment } from 'src/environments/environment';
 export class UsersService {
   private baseUrl = environment.baseUrlApi;
   constructor(private readonly http: HttpClient) {}
+
+  getAllUsers() {
+    const token1 = localStorage.getItem('token') as string;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Content-Encoding': 'gzip',
+        'Access-Control-Allow-Origin': '*',
+        Authorization: `Bearer ${token1}`,
+      }),
+    };
+    const body = {};
+
+    return this.http
+      .post<IUserRespose>(
+        `${this.baseUrl}/usuarios/consult-list`,
+        body,
+        httpOptions
+      )
+      .pipe();
+  }
+
+  saveUser(
+    nombre: string,
+    apellidoPaterno: string,
+    apellidoMaterno: string,
+    puesto: number,
+    correo: string,
+    grupo: string,
+    usuario: string
+  ) {
+    const token1 = localStorage.getItem('token') as string;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Content-Encoding': 'gzip',
+        'Access-Control-Allow-Origin': '*',
+        Authorization: `Bearer ${token1}`,
+      }),
+    };
+    const nombreCompleto = `${nombre} ${apellidoPaterno} ${apellidoMaterno}`;
+    const body = {
+      nombre,
+      nombreCompleto,
+      apellidoPaterno,
+      apellidoMaterno,
+      puesto,
+      correo,
+      usuario,
+      // grupoFk: grupo,
+      PAR_USR_GRUPO_FK: null,
+    };
+    return this.http
+      .post(`${this.baseUrl}/usuarios/save`, body, httpOptions)
+      .pipe();
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IBreadCrum } from '../../interfaces/breadcrum.interfaces';
@@ -10,6 +10,7 @@ import { IBreadCrum } from '../../interfaces/breadcrum.interfaces';
 })
 export class BreadcrumComponent implements OnInit {
   @Input({ required: true }) breadCrums: IBreadCrum[] = [];
+  @Output() actualizar: EventEmitter<string> = new EventEmitter();
   fontStyleControl = new FormControl('');
   constructor(private readonly _router: Router) {}
 
@@ -18,6 +19,10 @@ export class BreadcrumComponent implements OnInit {
   }
 
   navigate(url: string) {
+    const urlTemp = url.split('/');
+    console.log(urlTemp);
+    this.fontStyleControl.setValue(url);
     this._router.navigateByUrl(`${url}`, { replaceUrl: true });
+    this.actualizar.emit(url);
   }
 }

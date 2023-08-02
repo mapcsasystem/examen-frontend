@@ -1,1 +1,69 @@
-<p>user-page works!</p>
+<mat-card>
+    <mat-card-header>
+        <p>
+            <mat-form-field appearance="outline" style="width: 320px;">
+                <mat-label>Buscar...</mat-label>
+                <input type="text" matInput placeholder="Buscar..." [formControl]="formControlInput">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+        </p>
+        <!-- <p>
+            <button mat-raised-button color="primary">Crear grupo</button>
+        </p> -->
+    </mat-card-header>
+
+    <mat-card-content>
+
+        <div class="mat-elevation-z8 displayBlock">
+            <table mat-table [dataSource]="dataSource" matSort>
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 12px;">ID</th>
+                    <td mat-cell *matCellDef="let row" [style]="'font-size: 10px;'">
+                        {{ row.id }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="nombreCompleto">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 12px;">NOMBRE COMPLETO</th>
+                    <td mat-cell *matCellDef="let row" style="font-size: 10px;"> {{ row.nombreCompleto }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="puesto">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 12px;">PUESTO</th>
+                    <td mat-cell *matCellDef="let row" style="font-size: 10px;">{{ row.puesto }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="fechaRegistro">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 12px;">FECHA DE REGISTRO
+                    </th>
+                    <td mat-cell *matCellDef="let row" style="font-size: 10px;">{{ row.fechaRegistro | date }}</td>
+                </ng-container>
+
+
+
+                <ng-container matColumnDef="estatus">
+                    <th mat-header-cell *matHeaderCellDef style="font-size: 12px;">ESTATUS</th>
+                    <td mat-cell *matCellDef="let row" style="font-size: 10px;"> {{ row.estatus }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="puestoNombre" stickyEnd>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="font-size: 12px;">PUESTO NOMBRE</th>
+                    <td mat-cell *matCellDef="let row" [style]="'font-size: 10px;'">
+                        {{row.puestoNombre}}
+                    </td>
+
+                </ng-container>
+
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No se encontraron previsams con "{{formControlInput.value}}"</td>
+                </tr>
+            </table>
+
+        </div>
+        <mat-paginator [pageSizeOptions]="[5,10,20]" aria-label="Select page of previsams"></mat-paginator>
+    </mat-card-content>
+</mat-card>

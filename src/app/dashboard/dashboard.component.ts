@@ -40,6 +40,7 @@ export class DashboardComponent implements OnInit {
   }
 
   navigate(url: string): void {
+    this.addBreadCrum(url);
     this._router.navigateByUrl(`dashboard/${url}`, { replaceUrl: true });
   }
 
