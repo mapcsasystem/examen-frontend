@@ -67,7 +67,7 @@ export class UsersService {
       fechaUltAcceso: '2023-03-02',
       comentarios: 'prueba desde angular',
       modificacion: 'prueba',
-      fechaModificacion: '2023-03-02',
+      fechaModificacion: '2023-08-02',
       password: '123',
     };
 
