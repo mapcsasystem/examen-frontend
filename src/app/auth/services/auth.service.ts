@@ -21,56 +21,22 @@ export class AuthService {
   ) {}
 
   login(username: string, password: string): Observable<ILoginResponse> {
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     'Content-Type': 'application/json',
-    //     'Content-Encoding': 'gzip',
-    //     'Access-Control-Allow-Origin': '*',
-    //   }),
-    // };
-
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     'Content-Type': 'application/json',
-    //     'Authorization': 'Bearer your-token', // Cabecera de autorización personalizada
-    //     'X-Custom-Header': 'valor-personalizado', // Otras cabeceras personalizadas
-    //   }),
-    // };
-
     const body = {
       username,
       password,
     };
-    return this.http
-      .post<ILoginResponse>(
-        `${this.baseUrl}/session/login`,
-        body
-        // httpOptions
-      )
-      .pipe(
-        tap((resp) => {
-          // console.log(this.parseJwt(resp.jwttoken));
-        })
-      );
+    return this.http.post<ILoginResponse>(
+      `${this.baseUrl}/session/login`,
+      body
+    );
   }
 
   logout(username: string): Observable<Object> {
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     'Content-Type': 'application/json',
-    //     'Content-Encoding': 'gzip',
-    //     'Access-Control-Allow-Origin': '*',
-    //   }),
-    // };
     const body = {
       username,
     };
     return this.http
-      .post<ILogoutResponse>(
-        `${this.baseUrl}/session/logout`,
-        body
-        // httpOptions
-      )
+      .post<ILogoutResponse>(`${this.baseUrl}/session/logout`, body)
       .pipe(tap((value) => {}));
   }
 
