@@ -1,8 +1,8 @@
 <mat-toolbar color="light">
     <section>
         <mat-button-toggle-group [formControl]="fontStyleControl" aria-label="Font Style">
-            <mat-button-toggle value="grupos" (click)="navigate()">Grupos</mat-button-toggle>
-            <mat-button-toggle value="grupos-add">Crear grupo</mat-button-toggle>
+            <mat-button-toggle *ngFor="let b of breadCrums" [value]="b.url"
+                (click)="navigate(b.url)">{{b.title}}</mat-button-toggle>
         </mat-button-toggle-group>
     </section>
 </mat-toolbar>

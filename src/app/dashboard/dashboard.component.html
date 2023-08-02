@@ -3,8 +3,10 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item (click)="drawer.toggle()" routerLinkActive="active" routerLink="/dashboard/grupos">Grupos</a>
-      <a mat-list-item (click)="drawer.toggle()" routerLinkActive="active" routerLink="/dashboard/usuarios">Usuarios</a>
+      <a mat-list-item (click)="drawer.toggle();addBreadCrum('grupos')" routerLinkActive="active"
+        routerLink="/dashboard/grupos">Grupos</a>
+      <a mat-list-item (click)="drawer.toggle();addBreadCrum('usuarios')" routerLinkActive="active"
+        routerLink="/dashboard/usuarios">Usuarios</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -28,7 +30,7 @@
         </button>
       </mat-menu>
     </mat-toolbar>
-    <app-breadcrum></app-breadcrum>
+    <app-breadcrum [breadCrums]="breadCrums"></app-breadcrum>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
   </mat-sidenav-content>

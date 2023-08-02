@@ -15,11 +15,25 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'crear-grupo',
+        loadChildren: () =>
+          import(
+            '../dashboard/pages/group-create-page/group-create-page.module'
+          ).then((m) => m.GroupCreatePageModule),
+      },
+      {
         path: 'usuarios',
         loadChildren: () =>
           import('../dashboard/pages/users-page/users-page.module').then(
             (m) => m.UsersPageModule
           ),
+      },
+      {
+        path: 'crear-usuario',
+        loadChildren: () =>
+          import(
+            '../dashboard/pages/user-create-page/user-create-page.module'
+          ).then((m) => m.UserCreatePageModule),
       },
       {
         path: 'perfil',
