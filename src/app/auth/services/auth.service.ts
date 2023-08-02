@@ -36,7 +36,6 @@ export class AuthService {
     const body = {
       username: token.sub,
     };
-    localStorage.removeItem('token');
     return this.http
       .post<ILogoutResponse>(`${this.baseUrl}/session/logout`, body)
       .pipe(tap((value) => {}));
