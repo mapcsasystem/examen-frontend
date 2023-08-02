@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
   }
 
   logout(): void {
-    this._authService.logout('admin').subscribe((resp) => {
+    this._authService.logout().subscribe((resp) => {
       localStorage.removeItem('token');
       this._router.navigateByUrl('auth/login');
     });

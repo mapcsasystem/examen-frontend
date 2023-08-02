@@ -31,10 +31,12 @@ export class AuthService {
     );
   }
 
-  logout(username: string): Observable<Object> {
+  logout(): Observable<Object> {
+    const token = this.parseJwt(localStorage.getItem('token')!);
     const body = {
-      username,
+      username: token.sub,
     };
+    localStorage.removeItem('token');
     return this.http
       .post<ILogoutResponse>(`${this.baseUrl}/session/logout`, body)
       .pipe(tap((value) => {}));
