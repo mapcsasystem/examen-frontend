@@ -1,1 +1,50 @@
-<p>group-create-page works!</p>
+<form [formGroup]="formGroup" (ngSubmit)="save()" autocomplete="off">
+    <mat-card>
+        <mat-card-content>
+            <p>
+                <mat-form-field appearance="outline" class="size-input-full">
+                    <mat-label>Número</mat-label>
+                    <input type="text" matInput placeholder="Número" formControlName="numero">
+                    <mat-error
+                        *ngIf="getField('numero')?.invalid && (getField('numero')?.dirty || getField('numero')?.touched)">
+                        <span *ngIf="getField('numero')?.hasError('required')">
+                            Campo requerido.
+                        </span>
+                        <span *ngIf="getField('numero')?.hasError('pattern')">
+                            Solo se permiten números.
+                        </span>
+                    </mat-error>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="outline" class="size-input-full">
+                    <mat-label>Nombre</mat-label>
+                    <input type="text" matInput placeholder="Nombre" formControlName="grupo">
+                    <mat-error
+                        *ngIf="getField('grupo')?.invalid && (getField('grupo')?.dirty || getField('grupo')?.touched)">
+                        <span *ngIf="getField('grupo')?.hasError('required')">
+                            Campo requerido.
+                        </span>
+                    </mat-error>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field appearance="outline" class="size-input-full">
+                    <mat-label>Descripción</mat-label>
+                    <input type="text" matInput placeholder="Descripción" formControlName="descripcion">
+                    <mat-error
+                        *ngIf="getField('descripcion')?.invalid && (getField('descripcion')?.dirty || getField('descripcion')?.touched)">
+                        <span *ngIf="getField('descripcion')?.hasError('required')">
+                            Campo requerido.
+                        </span>
+                    </mat-error>
+                </mat-form-field>
+            </p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button type="button" mat-raised-button color="light" style="margin-right: 10px;"
+                (click)="cancel()">Cancelar</button>
+            <button type="submit" mat-raised-button color="primary">Guardar</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

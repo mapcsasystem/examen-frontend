@@ -12,3 +12,9 @@ export interface IDataList {
   estatus: number;
   timeOut: number;
 }
+
+export interface IGroupSaveResponse {
+  success: boolean;
+  code: number;
+  message: string;
+}
