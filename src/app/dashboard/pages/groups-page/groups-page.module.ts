@@ -6,6 +6,7 @@ import { GroupsPageRoutingModule } from './groups-page-routing.module';
 import { GroupsPageComponent } from './groups-page.component';
 
 import { MaterialModule } from 'src/app/shared/material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [GroupsPageComponent],
@@ -13,6 +14,7 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
     CommonModule,
     MaterialModule,
     HttpClientModule,
+    ReactiveFormsModule,
     GroupsPageRoutingModule,
   ],
 })

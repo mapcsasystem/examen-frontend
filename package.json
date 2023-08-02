@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --base-href ./",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build -c production --base-href ./",
     "build:staging": "ng build -c staging --base-href ./",
     "build:dev": "ng build -c dev --base-href ./",
@@ -22,6 +22,8 @@
     "@angular/platform-browser": "^16.1.0",
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
+    "@auth0/angular-jwt": "^5.1.2",
+    "ngx-spinner": "^16.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

@@ -22,15 +22,13 @@
           <mat-icon>person</mat-icon>
           <span>Perfil</span>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item (click)="logout()">
           <mat-icon>logout</mat-icon>
           <span>Cerrar sesión</span>
         </button>
       </mat-menu>
     </mat-toolbar>
-    <mat-toolbar color="light">
-      <span>HOME</span>
-    </mat-toolbar>
+    <app-breadcrum></app-breadcrum>
     <!-- Add Content Here -->
     <router-outlet></router-outlet>
   </mat-sidenav-content>

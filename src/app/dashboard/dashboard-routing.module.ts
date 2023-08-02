@@ -8,13 +8,6 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
-        path: '',
-        loadChildren: () =>
-          import('../dashboard/pages/groups-page/groups-page.module').then(
-            (m) => m.GroupsPageModule
-          ),
-      },
-      {
         path: 'grupos',
         loadChildren: () =>
           import('../dashboard/pages/groups-page/groups-page.module').then(
@@ -34,6 +27,11 @@ const routes: Routes = [
           import('../dashboard/pages/profile-page/profile-page.module').then(
             (m) => m.ProfilePageModule
           ),
+      },
+      {
+        path: '',
+        redirectTo: 'grupos',
+        pathMatch: 'full',
       },
     ],
   },

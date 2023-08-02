@@ -1,0 +1,23 @@
+.displayBlock {
+  height: 50vh;
+}
+table {
+  width: 100%;
+  height: auto;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25%;
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

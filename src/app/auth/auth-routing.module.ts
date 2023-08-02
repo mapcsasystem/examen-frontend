@@ -8,18 +8,16 @@ const routes: Routes = [
     component: AuthComponent,
     children: [
       {
-        path: '',
+        path: 'login',
         loadChildren: () =>
           import('./pages/login-page/login-page.module').then(
             (m) => m.LoginPageModule
           ),
       },
       {
-        path: 'login',
-        loadChildren: () =>
-          import('./pages/login-page/login-page.module').then(
-            (m) => m.LoginPageModule
-          ),
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full',
       },
     ],
   },

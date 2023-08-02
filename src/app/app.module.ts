@@ -1,11 +1,22 @@
-import { NgModule } from '@angular/core';
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  DEFAULT_CURRENCY_CODE,
+  LOCALE_ID,
+  NgModule,
+} from '@angular/core';
+import { registerLocaleData } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import LocaleEs from '@angular/common/locales/es-MX';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material/material.module';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { NgxSpinnerModule } from 'ngx-spinner';
+registerLocaleData(LocaleEs, 'es-MX');
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,8 +26,14 @@ import { MaterialModule } from './shared/material/material.module';
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule,
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
   ],
-  providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'es-MX' },
+    { provide: DEFAULT_CURRENCY_CODE, useValue: 'MXN' },
+    { provide: MAT_DATE_LOCALE, useValue: 'es-MX' },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
